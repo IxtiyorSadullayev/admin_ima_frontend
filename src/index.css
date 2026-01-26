@@ -3,3 +3,17 @@
   margin: 0;
   padding: 0;
 }
+
+@media print {
+  .printDoc{
+    display: none;
+    margin: 0;
+    padding: 0;
+  }
+  .printcontainer{
+    width: 100vw;
+  }
+  .printcontainer .card{
+    border: none!important;
+  }
+}

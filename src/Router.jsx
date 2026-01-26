@@ -1,12 +1,14 @@
 import { Link, Route, Routes } from "react-router-dom";
-import App from "./App";
 import Workers from "./Pages/Workers";
+import Students from "./Pages/Students";
+import QRCodeFile from "./components/QRGeneratsiya";
+import ClassesList from "./components/Classess/ClassesList";
 
 export default function RouterApp(){
 
     return  <div className="container-fluid">
         <div className="row">
-            <div className="col-3 p-4 ">
+            <div className="col-3 p-4 printDoc">
                 <nav class="nav flex-column">
                     <h4>IMA Control App</h4>
                     <hr />
@@ -28,6 +30,9 @@ export default function RouterApp(){
             <div className="col-9">
                 <Routes>
                     <Route path="workers" element={<Workers />}/>
+                    <Route path="students" element={<Students />}/>
+                    <Route path="students/getdata" element={<QRCodeFile />}/>
+                    <Route path="classes" element={<ClassesList />}/>
                 </Routes>
             </div>
         </div>
