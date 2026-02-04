@@ -47,6 +47,7 @@ function App() {
   if (navbatchi != null) {
     return <>
       <RouterApp />
+      <ToastContainer />
     </>
   }
   else {

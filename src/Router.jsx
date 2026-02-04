@@ -4,13 +4,14 @@ import Students from "./Pages/Students";
 import QRCodeFile from "./components/QRGeneratsiya";
 import ClassesList from "./components/Classess/ClassesList";
 import UserTypesList from "./components/Classess/UserTypesList";
+import Yuqlamalar from "./components/Yuqlamalar";
 
 export default function RouterApp(){
 
     return  <div className="container-fluid">
         <div className="row">
             <div className="col-3 p-4 printDoc">
-                <nav class="nav flex-column">
+                <nav className="nav flex-column">
                     <h4>IMA Control App</h4>
                     <hr />
                     <h5>API routes</h5>
@@ -35,6 +36,7 @@ export default function RouterApp(){
                     <Route path="students/getdata" element={<QRCodeFile />}/>
                     <Route path="classes" element={<ClassesList />}/>
                     <Route path="user-types" element={<UserTypesList />}/>
+                    <Route path="muster" element={<Yuqlamalar />}/>
                 </Routes>
             </div>
         </div>
