@@ -4,17 +4,12 @@ import axios from "axios";
 import { API_URL } from "../../constants";
 import { toast } from "react-toastify";
 import { AgGridReact } from "ag-grid-react";
+import ModalButton from "../MadalButton";
+import ModalContainer from "../ModalContainer";
 
 export default function ClassesList() {
     const [classes, setClasses] = useState([])
 
-    const [col, setCol] = useState([
-        { field: '#' },
-        { field: 'Sinf nomi' },
-        { field: 'Sinf haqida' },
-        { field: 'Yaratilgan vaqt' },
-        
-    ])
     async function getClassess() {
         await axios.get(API_URL + 'users/classname', {
             headers: {
@@ -24,6 +19,7 @@ export default function ClassesList() {
             .then(res => {
                 const data = res.data.map((d, index) => {
                     return {
+                        "id": d.id,
                         "#": index + 1,
                         "Sinf nomi": d.classname,
                         "Sinf haqida": d.description,
@@ -47,11 +43,52 @@ export default function ClassesList() {
 
         <AddClass />
         <hr />
-        <div className="container-fluid" style={{height: 500}}>
-            <AgGridReact
-                rowData={classes}
-                columnDefs={col}
-            />
+        <div className="container-fluid" style={{ height: 500 }}>
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th scope="col">№</th>
+                        <th scope="col">Sinf nomi</th>
+                        <th scope="col">Sinf haqida</th>
+                        <th scope="col">Yaratilgan vaqt</th>
+                        <th scope="col">Harakatlar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        classes.map(sinf => {
+                            return <tr key={sinf['#']}>
+                                <th>{sinf["#"]}</th>
+                                <td>{sinf["Sinf nomi"]}</td>
+                                <td>{sinf["Sinf haqida"]}</td>
+                                <td>{sinf["Yaratilgan vaqt"]}</td>
+                                <td>
+                                    <ModalButton  buttonType={'info mx-2'} buttonid={`sinf${sinf.id}`} >📝</ModalButton>
+                                    {/* <button className="btn btn-outline-info mx-2">📝</button> */}
+                                    <ModalContainer modaltitle={"Sinfni o'zgartirish ma'lumotlari"} modalid={`sinf${sinf.id}`} >
+                                        <div className="modal-body">
+                                            <input type="text" className="form-control my-2" value={sinf["Sinf nomi"]} />
+                                            <input type="text" className="form-control my-2" value={sinf["Sinf haqida"]} />
+                                        </div>
+                                        <div className="modal-footer">
+                                            <button type="button" class="btn btn-info" data-bs-dismiss="modal">Update</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </ModalContainer>
+                                    <ModalButton buttonType={'danger'} buttonid={`sinfd${sinf.id}`} >🗑</ModalButton>
+                                    <ModalContainer modaltitle={"Sinfni rostdan ham o'chirmoqchimisiz ?"} modalid={`sinfd${sinf.id}`} >
+
+                                        <div className="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </ModalContainer>
+                                </td>
+                            </tr>
+                        })
+                    }
+                </tbody>
+            </table>
         </div>
 
 

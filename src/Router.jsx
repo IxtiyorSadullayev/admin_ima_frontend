@@ -3,6 +3,7 @@ import Workers from "./Pages/Workers";
 import Students from "./Pages/Students";
 import QRCodeFile from "./components/QRGeneratsiya";
 import ClassesList from "./components/Classess/ClassesList";
+import UserTypesList from "./components/Classess/UserTypesList";
 
 export default function RouterApp(){
 
@@ -33,6 +34,7 @@ export default function RouterApp(){
                     <Route path="students" element={<Students />}/>
                     <Route path="students/getdata" element={<QRCodeFile />}/>
                     <Route path="classes" element={<ClassesList />}/>
+                    <Route path="user-types" element={<UserTypesList />}/>
                 </Routes>
             </div>
         </div>
