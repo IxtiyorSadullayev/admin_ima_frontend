@@ -9,8 +9,8 @@ import Yuqlamalar from "./components/Yuqlamalar";
 export default function RouterApp(){
 
     return  <div className="container-fluid">
-        <div className="row">
-            <div className="col-3 p-4 printDoc">
+        <div className="row ">
+            <div className="col-lg-3 col-sm-12 p-4 printDoc h-100 border-end overflow-y-auto fullvh">
                 <nav className="nav flex-column">
                     <h4>IMA Control App</h4>
                     <hr />
@@ -29,7 +29,7 @@ export default function RouterApp(){
                     <Link className="nav-link" to={'/muster'}>Yo'qlamalar</Link>
                 </nav>
             </div>
-            <div className="col-9">
+            <div className="col-lg-9 h-100 col-sm-12 fullvh overflow-y-auto">
                 <Routes>
                     <Route path="workers" element={<Workers />}/>
                     <Route path="students" element={<Students />}/>

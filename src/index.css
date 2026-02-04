@@ -1,19 +1,32 @@
-*{
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+.fullvh {
+  height: 100vh;
+}
+
+@media screen and (max-width: 950px) {
+  .fullvh {
+    height: auto;
+  }
+
+}
+
 @media print {
-  .printDoc{
+  .printDoc {
     display: none;
     margin: 0;
     padding: 0;
   }
-  .printcontainer{
+
+  .printcontainer {
     width: 100vw;
   }
-  .printcontainer .card{
-    border: none!important;
+
+  .printcontainer .card {
+    border: none !important;
   }
 }

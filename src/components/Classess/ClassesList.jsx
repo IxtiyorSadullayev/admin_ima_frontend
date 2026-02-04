@@ -3,7 +3,6 @@ import AddClass from "./AddClass";
 import axios from "axios";
 import { API_URL } from "../../constants";
 import { toast } from "react-toastify";
-import { AgGridReact } from "ag-grid-react";
 import ModalButton from "../MadalButton";
 import ModalContainer from "../ModalContainer";
 

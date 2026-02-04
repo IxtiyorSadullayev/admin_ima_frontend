@@ -51,7 +51,7 @@ export default function Students() {
 
 
     return <>
-        <div className="container ">
+        <div className="container-fluid ">
             <div className="my-3 d-flex justify-content-end printDoc">
                 <ModalButton buttonid={'adnew'} buttonType={'primary'}>
                     Add new

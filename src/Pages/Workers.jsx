@@ -58,7 +58,7 @@ export default function Workers() {
         }
     }, [utype])
 
-    return <div className="container">
+    return <div className="container-fluid">
         <div className="my-3 d-flex justify-content-end">
             <ModalButton buttonid={'adnew'} buttonType={'primary'}>
                 Add new

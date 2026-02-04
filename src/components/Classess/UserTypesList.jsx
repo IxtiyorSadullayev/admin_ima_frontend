@@ -22,7 +22,7 @@ export default function UserTypesList() {
     }, [])
 
     return <>
-        <div className="container my-4">
+        <div className="container-fluid my-4">
             <h3 className="my-4">Tizimdagi mavjud rol turlari</h3>
             <AddRole />
             <table className="table">

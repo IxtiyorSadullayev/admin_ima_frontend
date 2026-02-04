@@ -30,7 +30,7 @@ export default function Yuqlamalar() {
 
                 })
                 setKelganlar(data)
-                if (res.data.length == 0) {
+                if (res.data.length === 0) {
                     toast.info("Ushbu kuni hech kim kelmagan")
                 }
                 else {
@@ -66,14 +66,14 @@ export default function Yuqlamalar() {
 
 
     return <>
-        <div className="container my-4">
+        <div className="container-fluid my-4">
             <h3>Yo'qlamalarni olish bo'limi </h3>
             <div className="row">
-                <div className="col-6">
+                <div className="col-lg-6 col-sm-12 my-2">
                     <p>Qaysi sanadagi yo'qlamalarni ko'rmoqchisiz</p>
                     <input type="date" value={sana} onChange={e => setSana(e.target.value)} className="form-control" />
                 </div>
-                <div className="col-6">
+                <div className="col-lg-6 col-sm-12 my-2">
                     <button className="btn btn-outline-info mx-2" onClick={() => getYuqlamalar()}>Search</button>
                     {
                         kelganlar.length > 0 ? <button onClick={() => exportToExcel()} className="btn btn-outline-primary">XLS ga yuklab olish</button> : ""

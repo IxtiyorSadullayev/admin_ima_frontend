@@ -1,10 +1,10 @@
 export default function Login({loading, login, password, setLogin, setPassword, loginSubmit}) {
 
     return <>
-        <div className="container ">
+        <div className="container-fluid ">
             <div className="row my-5">
-                <div className="col-3 col-sm-0"></div>
-                <div className="col-6 col-sm-12 card">
+                <div className="col-lg-4 col-sm-0"></div>
+                <div className="col-lg-4 col-sm-12 card">
                     <h1 className="text-center">Autorizatsiya</h1>
                     <div className="mb-3">
                         <label htmlFor="exampleFormControlInput1" className="form-label">Login</label>
@@ -26,7 +26,7 @@ export default function Login({loading, login, password, setLogin, setPassword, 
                         </button>
                     </div>
                 </div>
-                <div className="col-3 col-sm-0"></div>
+                <div className="col-lg-4 col-sm-0"></div>
             </div>
         </div>
     </>
