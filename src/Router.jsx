@@ -5,6 +5,8 @@ import QRCodeFile from "./components/QRGeneratsiya";
 import ClassesList from "./components/Classess/ClassesList";
 import UserTypesList from "./components/Classess/UserTypesList";
 import Yuqlamalar from "./components/Yuqlamalar";
+import UserTypeDetails from "./components/UserTypes/UserTypeDetails";
+import ClassDetails from "./components/Classess/ClassDetails";
 
 export default function RouterApp(){
 
@@ -35,7 +37,9 @@ export default function RouterApp(){
                     <Route path="students" element={<Students />}/>
                     <Route path="students/getdata" element={<QRCodeFile />}/>
                     <Route path="classes" element={<ClassesList />}/>
+                    <Route path="classes/:id" element={<ClassDetails />}/>
                     <Route path="user-types" element={<UserTypesList />}/>
+                    <Route path="user-types/:id" element={<UserTypeDetails />}/>
                     <Route path="muster" element={<Yuqlamalar />}/>
                 </Routes>
             </div>

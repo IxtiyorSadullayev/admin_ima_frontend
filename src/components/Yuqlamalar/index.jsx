@@ -25,7 +25,8 @@ export default function Yuqlamalar() {
                         id: r.id,
                         come: r.come,
                         fullname: r.user.fullname,
-                        classname: r.user.className.classname
+                        classname: r.user.className.classname,
+                        createdAt: new Date(r.createdAt)  
                     }
 
                 })
@@ -60,7 +61,7 @@ export default function Yuqlamalar() {
         });
 
         // Yuklab olish
-        saveAs(blob, sana + ".xlsx");
+        saveAs(blob, (sana===""?"shu paytgacha": sana) + ".xlsx");
     };
 
 

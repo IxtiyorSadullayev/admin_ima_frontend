@@ -4,6 +4,7 @@ import { API_URL } from "../../constants"
 import AddRole from "./AddRole"
 import ModalButton from "../MadalButton"
 import ModalContainer from "../ModalContainer"
+import { Link } from "react-router-dom"
 
 export default function UserTypesList() {
     const [usertypes, setUserTypeS] = useState([])
@@ -25,7 +26,7 @@ export default function UserTypesList() {
         <div className="container-fluid my-4">
             <h3 className="my-4">Tizimdagi mavjud rol turlari</h3>
             <AddRole />
-            <table className="table">
+            <table className="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -40,8 +41,8 @@ export default function UserTypesList() {
                         usertypes.map((d, index) => {
                             return <tr key={index}>
                                 <th >{index + 1}</th>
-                                <td >{d.role}</td>
-                                <td >{d.description}</td>
+                                <td ><Link to={'/user-types/'+d.id} className="nav-link">{d.role}</Link></td>
+                                <td >{d.description.length>30?d.description.slice(0, 25)+"...": d.description}</td>
                                 <td >
                                     <ModalButton buttonType={'info mx-2'} buttonid={`sinf${d.id}`} >📝</ModalButton>
                                     {/* <button className="btn btn-outline-info mx-2">📝</button> */}

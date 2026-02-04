@@ -5,6 +5,7 @@ import { API_URL } from "../../constants";
 import { toast } from "react-toastify";
 import ModalButton from "../MadalButton";
 import ModalContainer from "../ModalContainer";
+import { Link } from "react-router-dom";
 
 export default function ClassesList() {
     const [classes, setClasses] = useState([])
@@ -58,8 +59,8 @@ export default function ClassesList() {
                         classes.map(sinf => {
                             return <tr key={sinf['#']}>
                                 <th>{sinf["#"]}</th>
-                                <td>{sinf["Sinf nomi"]}</td>
-                                <td>{sinf["Sinf haqida"]}</td>
+                                <td><Link to={'/classes/'+sinf['id']} className="nav-link">{sinf["Sinf nomi"]}</Link></td>
+                                <td><Link to={'/classes/'+sinf['id']} className="nav-link">{sinf["Sinf haqida"]}</Link></td>
                                 <td>{sinf["Yaratilgan vaqt"]}</td>
                                 <td>
                                     <ModalButton  buttonType={'info mx-2'} buttonid={`sinf${sinf.id}`} >📝</ModalButton>
