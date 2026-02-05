@@ -43,6 +43,7 @@ export default function ClassesList() {
 
         <AddClass />
         <hr />
+        <span>Hozircha sinflarni o'zgartirish va o'chirish imkoniyati mavjud emas</span>
         <div className="container-fluid" style={{ height: 500 }}>
             <table className="table">
                 <thead>

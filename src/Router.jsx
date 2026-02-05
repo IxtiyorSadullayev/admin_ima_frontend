@@ -7,6 +7,7 @@ import UserTypesList from "./components/Classess/UserTypesList";
 import Yuqlamalar from "./components/Yuqlamalar";
 import UserTypeDetails from "./components/UserTypes/UserTypeDetails";
 import ClassDetails from "./components/Classess/ClassDetails";
+import StudentDetails from "./components/Student";
 
 export default function RouterApp(){
 
@@ -35,6 +36,7 @@ export default function RouterApp(){
                 <Routes>
                     <Route path="workers" element={<Workers />}/>
                     <Route path="students" element={<Students />}/>
+                    <Route path="students/:id" element={<StudentDetails />}/>
                     <Route path="students/getdata" element={<QRCodeFile />}/>
                     <Route path="classes" element={<ClassesList />}/>
                     <Route path="classes/:id" element={<ClassDetails />}/>
