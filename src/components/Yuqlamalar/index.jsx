@@ -62,7 +62,7 @@ export default function Yuqlamalar() {
                     }
 
                 })
-                setKelganlar(data)
+                setKelmaganlar(data)
                 if (res.data.length === 0) {
                     toast.info("Ushbu kuni hech kim kelmagan")
                 }

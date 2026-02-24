@@ -8,6 +8,7 @@ import Yuqlamalar from "./components/Yuqlamalar";
 import UserTypeDetails from "./components/UserTypes/UserTypeDetails";
 import ClassDetails from "./components/Classess/ClassDetails";
 import StudentDetails from "./components/Student";
+import HomePage from "./Pages/HomePage";
 
 export default function RouterApp(){
 
@@ -35,6 +36,7 @@ export default function RouterApp(){
             <div className="col-lg-9 h-100 col-sm-12 fullvh overflow-y-auto">
                 <Routes>
                     <Route path="workers" element={<Workers />}/>
+                    <Route path="" element={<HomePage />}/>
                     <Route path="students" element={<Students />}/>
                     <Route path="students/:id" element={<StudentDetails />}/>
                     <Route path="students/getdata" element={<QRCodeFile />}/>
