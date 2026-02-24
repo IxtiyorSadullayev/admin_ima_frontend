@@ -9,6 +9,7 @@ export default function Yuqlamalar() {
 
     const [sana, setSana] = useState('')
     const [kelganlar, setKelganlar] = useState([])
+    const [kelmaganlar, setKelmaganlar] = useState([])
     async function getYuqlamalar() {
         await axios.get(API_URL + 'yuqlama/sana', {
             params: {
@@ -27,6 +28,37 @@ export default function Yuqlamalar() {
                         fullname: r.user.fullname,
                         classname: r.user.className.classname,
                         createdAt: new Date(r.createdAt)  
+                    }
+
+                })
+                setKelganlar(data)
+                if (res.data.length === 0) {
+                    toast.info("Ushbu kuni hech kim kelmagan")
+                }
+                else {
+                    toast.info(`${sana} kunidagi ma'lumotlar yuklandi`)
+                }
+            })
+            .catch(err => toast.warning(err.response.data.message))
+    }
+    async function getYuqlamaKelmaganlar() {
+        await axios.get(API_URL + 'yuqlama/kelmaganlar', {
+            params: {
+                sana: sana
+            },
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`
+            }
+        })
+            .then(res => {
+
+                var data = res.data.map(r => {
+                    return {
+                        id: r.id,
+                        come: "Kelmagan",
+                        fullname: r.fullname,
+                        classname: r.className.classname,
+                        createdAt: "Kelmagan" 
                     }
 
                 })
@@ -65,6 +97,29 @@ export default function Yuqlamalar() {
     };
 
 
+    const exportToExcelKelmaganlar = () => {
+        // JSON → Worksheet
+        const worksheet = XLSX.utils.json_to_sheet(kelmaganlar);
+
+        // Workbook yaratish
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, sana);
+
+        // Excel buffer
+        const excelBuffer = XLSX.write(workbook, {
+            bookType: "xlsx",
+            type: "array",
+        });
+
+        // Blob
+        const blob = new Blob([excelBuffer], {
+            type: "application/octet-stream",
+        });
+
+        // Yuklab olish
+        saveAs(blob, (sana===""?"shu paytgacha": sana) + ".xlsx");
+    };
+
 
     return <>
         <div className="container-fluid my-4">
@@ -75,9 +130,13 @@ export default function Yuqlamalar() {
                     <input type="date" value={sana} onChange={e => setSana(e.target.value)} className="form-control" />
                 </div>
                 <div className="col-lg-6 col-sm-12 my-2">
-                    <button className="btn btn-outline-info mx-2" onClick={() => getYuqlamalar()}>Search</button>
+                    <button className="btn btn-outline-info mx-2" onClick={() => getYuqlamalar()}>Kelganlarni qidirish</button>
+                    <button className="btn btn-outline-info mx-2" onClick={() => getYuqlamaKelmaganlar()}>Kelmaganlarni qidirish</button>
                     {
                         kelganlar.length > 0 ? <button onClick={() => exportToExcel()} className="btn btn-outline-primary">XLS ga yuklab olish</button> : ""
+                    }
+                    {
+                        kelmaganlar.length > 0 ? <button onClick={() => exportToExcelKelmaganlar()} className="btn btn-outline-primary">XLS ga yuklab olish kelmaganlarni</button> : ""
                     }
                 </div>
             </div>

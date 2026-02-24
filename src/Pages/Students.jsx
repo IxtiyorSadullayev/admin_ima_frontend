@@ -3,7 +3,7 @@ import ModalButton from "../components/MadalButton"
 import axios from "axios"
 import { API_URL } from "../constants"
 import { toast } from "react-toastify"
-import { NavLink } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 
 export default function Students() {
 
@@ -94,7 +94,7 @@ export default function Students() {
                             utype===''?"":users.map((user, index) => {
                                 return <tr key={index}>
                                     <th scope="row">{index + 1}</th>
-                                    <td>{user.fullname}</td>
+                                    <td><Link className="nav-link" to={'/students/'+user.id}>{user.fullname}</Link></td>
                                     <td>{user.birthday.split("T")[0]}</td>
                                     <td>{user.pas_seria}</td>
                                     <td>{user.pas_number}</td>

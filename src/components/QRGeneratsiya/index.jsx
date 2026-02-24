@@ -41,7 +41,7 @@ export default function QRCodeFile() {
                             logoPadding={5} // Padding around the logo
                             removeQrCodeBehindLogo={true} // Removes QR code cells behind
                             ecLevel="H" // Error correction level (High is recommended when using a logo)
-                            qrStyle="dots" // Style of the QR code modules (squares, dots, or fluid)
+                            qrStyle="fluid" // Style of the QR code modules (squares, dots, or fluid)
                         />
                         <div className="align-items-start">
                             <i className="p-0"><i>Scan me</i></i> <br />
